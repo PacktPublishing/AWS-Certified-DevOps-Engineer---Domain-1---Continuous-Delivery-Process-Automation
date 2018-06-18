@@ -1,0 +1,16 @@
+{
+  "Resources" : {
+    "mySubnet" : { 
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : "vpc-4d713136",
+        "CidrBlock" : "10.0.0.0/24",
+        "AvailabilityZone" : {
+           "Fn::Select" : [ "1", { "Fn::GetAZs" : "us-east-1" } ]
+      }
+    }
+  }
+ }
+}
+
+

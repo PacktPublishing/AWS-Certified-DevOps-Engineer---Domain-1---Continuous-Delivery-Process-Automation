@@ -1,0 +1,17 @@
+{
+  "Resources": {
+     "MYS3": { 
+         "Type": "AWS::S3::Bucket", 
+         "DeletionPolicy" : "Retain",
+         "Properties": {
+           "BucketName": "mypackts3demo007",
+           "VersioningConfiguration": {
+              "Status": "Enabled",
+           
+           }
+        }
+
+      }
+   }
+}
+

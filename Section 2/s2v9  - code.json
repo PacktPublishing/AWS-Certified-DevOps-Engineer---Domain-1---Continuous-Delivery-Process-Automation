@@ -1,0 +1,51 @@
+{
+  "Resources": {
+    "SSHServerSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "VpcId" : "vpc-db8115a3",
+        "GroupDescription" : "Allow SSH access",
+        "SecurityGroupIngress" : [
+          {"IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : "0.0.0.0/0"}
+        ]
+      }
+    },
+    "MyEC2": {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+        "ImageId" : "ami-8c1be5f6",
+        "KeyName" : "kplabs-new",
+        "InstanceType" : "t2.micro",
+        "NetworkInterfaces" : [ {
+          "AssociatePublicIpAddress" : "true",
+          "DeviceIndex" : "0",
+          "GroupSet" : [ {"Ref" : "SSHServerSecurityGroup"} ],
+          "SubnetId" : "subnet-4e1bd713"
+        } ],
+      },
+      "CreationPolicy": {
+        "ResourceSignal": {
+          "Count": 1,
+          "Timeout": "PT20M"
+        }
+      }
+    },
+    "MyTestSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "DependsOn" : "MyEC2",
+      "Properties" : {
+        "VpcId" : "vpc-db8115a3",
+        "GroupDescription" : "A test security group",
+        "SecurityGroupIngress" : [
+          {"IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : "0.0.0.0/0"}
+        ]
+      }
+    }
+  },
+  "Outputs" : {
+    "PublicIp" : {
+      "Value" : { "Fn::GetAtt" : [ "MyEC2", "PublicIp" ] },
+      "Description" : "The instance's public IP"
+    }
+  }
+}
