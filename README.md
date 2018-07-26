@@ -19,7 +19,7 @@ To fully benefit from the coverage included in this course, you will need:<br/>
 This course is targeted at system administrators and DevOps Engineers looking to take the AWS Certified DevOps Engineer examination. If you want to pass the bar with flying colors and become an AWS Certified DevOps Engineer Professional, then this course is for you.
 ### Technical Requirements
 This course has the following software requirements:<br/>
-<b>Minimum Hardware Requirements</b><b>
+<b>Minimum Hardware Requirements</b><br>
 For successful completion of this course, students will require the computer systems with at least the following:
 <br><ul><li>OS: Any</li><li>Processor: 2 core</li><li>Memory: 4 GB RAM</li><li>Storage: 10 GB free storage</li></ul>
 
